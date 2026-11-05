@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Capriola&family=Carattere&family=Caveat:wght@400;500;600;700&family=Gluten:wght@100;200;300;400;500;600;700;800;900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Pacifico&display=swap");
-
 :root {
 }
 
@@ -32,6 +30,34 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.font-arial {
+  font-family: Arial, sans-serif;
+}
+
+.font-courier-new {
+  font-family: "Courier New", monospace;
+}
+
+.font-trebuchet {
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+.font-lucida-console {
+  font-family: "Lucida Console", monospace;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .splash header {
@@ -101,6 +127,7 @@ h2 {
   font-size: 10pt;
   color: whitesmoke;
   padding: 10px;
+  border: none;
 }
 
 .main-btn span {
@@ -116,19 +143,26 @@ h2 {
   color: white;
 }
 
-div.round-button#joke-btn {
+button.round-button#joke-btn {
   background-color: rgb(179, 32, 32);
   border-radius: 50%;
   width: 200px;
   height: 200px;
 }
 
-div.round-button#joke-btn:hover {
+button.round-button#joke-btn:hover {
   background-color: rgb(214, 0, 0);
 }
 
-div.round-button#joke-btn:active {
+button.round-button#joke-btn:active {
   background-color: rgb(148, 0, 0);
+}
+
+button.round-button#joke-btn:focus-visible,
+button.popup-button#jokeQA-answer:focus-visible,
+.joke-footer .close-button:focus-visible {
+  outline: 4px solid #0a5ad1;
+  outline-offset: 4px;
 }
 
 div.triangle-button#gang-btn {
@@ -239,7 +273,7 @@ p.joke-punchline.visible {
   color: black;
 }
 
-.joke-footer div.close-button {
+.joke-footer .close-button {
   position: absolute;
   font-size: 24pt;
   top: 10px;
@@ -248,14 +282,17 @@ p.joke-punchline.visible {
   padding: 0;
   display: flex;
   align-items: center;
+  background: transparent;
+  border: none;
+  line-height: 1;
 }
 
-.joke-footer div.close-button:hover {
+.joke-footer .close-button:hover {
   background-color: lightgray;
   border-radius: 10px;
 }
 
-.joke-footer div.close-button:active {
+.joke-footer .close-button:active {
   background-color: initial;
   color: gray;
 }
@@ -274,23 +311,32 @@ footer.joke-footer {
   border-radius: 15px;
   font-size: 16pt;
   filter: drop-shadow(5px 5px 5px black);
-  transition: all 75ms ease;
+  transition:
+    transform 140ms ease,
+    filter 140ms ease,
+    background-color 140ms ease,
+    color 140ms ease;
+}
+
+button.popup-button#jokeQA-answer.close-ready {
+  background-color: #1d4ed8;
+  color: #ffffff;
 }
 
 button.popup-button#jokeQA-answer:active {
-  transform: translate(5px, 5px);
+  transform: translate(4px, 4px);
   filter: unset;
 }
 
 button.popup-button#jokeQA-answer.disabled {
   background-color: lightgray !important;
   color: gray !important;
-  transform: translate(5px, 5px);
+  transform: translate(4px, 4px);
   filter: unset;
 }
 
 button.popup-button#jokeQA-answer.disabled:hover {
-  cursor: initial !important;
+  cursor: not-allowed !important;
 }
 
 button.popup-button#jokeQA-answer.disabled:active {
