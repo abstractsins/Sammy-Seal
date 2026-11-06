@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sammy Seal
 
-## Getting Started
+Sammy Seal is a playful single-page Next.js app that randomizes:
 
-First, run the development server:
+- a Sammy Seal portrait
+- a nickname/title style
+- a joke popup experience with a delayed "Close" state
+- a bonus random cartoon character in the popup
+
+The app is built with Next.js App Router, React, and TypeScript.
+
+## Requirements
+
+- Node.js 20+ (recommended)
+- pnpm (recommended, lockfile included)
+
+## Getting started
+
+Install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run the development server:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+## Available scripts
 
-To learn more about Next.js, take a look at the following resources:
+- `pnpm dev` - Start the local dev server with Turbopack
+- `pnpm build` - Create a production build
+- `pnpm start` - Run the production server
+- `pnpm lint` - Run Next.js/ESLint checks
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```text
+src/app/
+  page.tsx                    # Main splash page and joke button behavior
+  jokes.ts                    # Joke data (setup/punchline)
+  components/
+    JokePopup.tsx             # Joke modal UI and answer/close flow
+    RandomCartoon.tsx         # Random side-character image in popup
+    ImagePreloader.tsx        # Preloads cartoon images
+  utilities/
+    homePageUtils.ts          # Randomization + popup action helpers
+public/                       # Portraits, characters, and favicon assets
+```
 
-## Deploy on Vercel
+## Behavior notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Randomized values are persisted in `sessionStorage` to avoid immediate repeats.
+- Joke selection avoids repeating the current and previous joke when possible.
+- The joke popup shows `Answer` first, then enables `Close` after a short delay.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Credits
+
+Original artwork by Matthew Hill.
